@@ -19,17 +19,23 @@ namespace MoodAnalyzerProblem
         {
             try
             {
-                //This method is used to check whether the substring occurs within a given string or not
-                if (this.message.Contains("Sad")) 
-                    return "SAD";
-                else
-                    return "HAPPY";  //default return value 
+                if (this.message.Equals(string.Empty))
+                {
+                    throw new CustomException(CustomException.ExceptionType.EMPTY_MESSAGE, "Mood should not be empty");
+                }
 
+                if (this.message.Contains("Sad"))
+                {
+                    return "SAD";
+                }
+                else
+                {
+                    return "HAPPY";
+                }
             }
             catch (NullReferenceException)
             {
-
-                return "HAPPY?!!";
+                throw new CustomException(CustomException.ExceptionType.NULL_MESSAGE, "Mood should not be null");
             }
         }
     }
