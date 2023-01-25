@@ -5,15 +5,16 @@ namespace MoodAnalyzerMSTest
     [TestClass]
     public class UnitTest1
     {
-        MoodAnalyzerProblem.MoodAnalyzer moodAnalyzer = new MoodAnalyzer("I am in Any Mood");
+       
         [TestMethod]
         public void GivenSadMoodShouldReturnSAD()
-        {
+        {           
             //Arrange
-            string expected = "SAD";
+            string expected = "I am in a Sad Mood";
+            MoodAnalyzer mood = new MoodAnalyzer(expected);
 
             //Act
-            string actual = moodAnalyzer.AnalyzeMood();
+            string actual = mood.AnalyzeMood();
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -22,13 +23,28 @@ namespace MoodAnalyzerMSTest
         public void GivenAnyMoodShouldReturnHAPPY()
         {
             //Arrange
-            string expected = "HAPPY";
+            string expected = "I am in Any Mood";
+            MoodAnalyzer mood = new MoodAnalyzer(expected);
 
             //Act
-            string actual = moodAnalyzer.AnalyzeMood();
+            string actual = mood.AnalyzeMood();
 
             //Assert
             Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+
+        public void TestAnalyseMood_ShouldReturnHAPPY1()
+        {
+            //Arrange
+            string message = null;
+            MoodAnalyzer mood = new MoodAnalyzer(message);
+
+            //Act
+            string result = mood.AnalyzeMood();
+
+            //Assert
+            Assert.AreEqual(result, "HAPPY?!!");
         }
     }
 }

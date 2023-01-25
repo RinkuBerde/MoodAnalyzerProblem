@@ -9,7 +9,7 @@ namespace MoodAnalyzerProblem
     public class MoodAnalyzer
     {
         string message;
-       
+
         public MoodAnalyzer(string message)
         {
             this.message = message;
@@ -17,13 +17,19 @@ namespace MoodAnalyzerProblem
 
         public string AnalyzeMood()
         {
-            if (this.message.Contains("Sad"))
+            try
             {
-                return "SAD";
+                //This method is used to check whether the substring occurs within a given string or not
+                if (this.message.Contains("Sad")) 
+                    return "SAD";
+                else
+                    return "HAPPY";  //default return value 
+
             }
-            else
+            catch (NullReferenceException)
             {
-                return "HAPPY";
+
+                return "HAPPY?!!";
             }
         }
     }
